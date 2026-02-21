@@ -70,19 +70,19 @@ const item = {
 };
 
 const ProductsSection = ({ onPurchase }: ProductsSectionProps) => (
-  <section id="products" className="section-divider py-28 px-6">
-    <div className="max-w-6xl mx-auto">
+  <section id="products" className="section-divider px-6 py-24">
+    <div className="mx-auto max-w-6xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-16"
+        className="mb-14"
       >
         <div className="tag mb-4">Products</div>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Our Tools</h2>
-        <p className="text-muted-foreground mt-3 text-sm max-w-md">
-          Two precision tools. One goal — total system control.
+        <h2 className="text-4xl font-black tracking-tighter md:text-5xl">Our Tools</h2>
+        <p className="mt-3 max-w-md text-sm text-muted-foreground">
+          Two precision tools. One goal: total system control.
         </p>
       </motion.div>
 
@@ -91,45 +91,35 @@ const ProductsSection = ({ onPurchase }: ProductsSectionProps) => (
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid md:grid-cols-2 gap-5"
+        className="grid gap-5 md:grid-cols-2"
       >
         {products.map((product) => (
-          <motion.div
-            key={product.id}
-            variants={item}
-            className="bg-card border border-border/60 rounded-xl p-8 md:p-10 flex flex-col group hover:border-border hover:shadow-[0_0_60px_hsl(210_100%_60%_/_0.04)] transition-all duration-500"
-          >
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 rounded-lg bg-muted/50 flex items-center justify-center">
-                {product.icon}
-              </div>
+          <motion.div key={product.id} variants={item} className="utility-panel utility-panel-hover flex flex-col p-8 md:p-10">
+            <div className="mb-6 flex items-start justify-between">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-border/60 bg-muted/40">{product.icon}</div>
               <div className="tag">{product.tag}</div>
             </div>
-            <h3 className="text-xl font-bold mb-1 tracking-tight">{product.name}</h3>
-            <p className="font-mono text-[10px] text-muted-foreground tracking-widest uppercase mb-5">
-              {product.subtitle}
-            </p>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-              {product.description}
-            </p>
-            <ul className="space-y-2.5 mb-10 flex-1">
+            <h3 className="mb-1 text-xl font-bold tracking-tight">{product.name}</h3>
+            <p className="mb-5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{product.subtitle}</p>
+            <p className="mb-8 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
+            <ul className="mb-10 flex-1 space-y-2.5">
               {product.features.map((f) => (
                 <li key={f} className="flex items-center gap-3 text-sm">
-                  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="text-muted-foreground flex-shrink-0">
+                  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className="flex-shrink-0 text-muted-foreground">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-foreground/80">{f}</span>
                 </li>
               ))}
             </ul>
-            <div className="flex items-center justify-between mt-auto pt-6 border-t border-border/40">
+            <div className="mt-auto flex items-center justify-between border-t border-border/40 pt-6">
               <div>
-                <span className="text-2xl font-bold font-mono">${product.price}</span>
-                <span className="text-muted-foreground text-xs ml-2 font-mono">/ {product.license}</span>
+                <span className="font-mono text-2xl font-bold">${product.price}</span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">/ {product.license}</span>
               </div>
               <button
                 onClick={() => onPurchase(product)}
-                className="font-mono text-xs tracking-wider uppercase bg-foreground text-primary-foreground px-6 py-2.5 rounded-lg hover:bg-foreground/90 transition-all duration-300 hover:shadow-[0_0_20px_hsl(210_100%_60%_/_0.1)]"
+                className="rounded-lg border border-brand-glow/50 bg-brand-glow/15 px-6 py-2.5 font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:bg-brand-glow/30"
               >
                 Buy Now
               </button>

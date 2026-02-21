@@ -18,8 +18,8 @@ const Navbar = ({ onAccountClick }: NavbarProps) => {
   const { user } = useAuth();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-xl border-b border-border/30">
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border/40 bg-background/55 backdrop-blur-xl">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
         <a href="#" className="flex items-center gap-2.5 group">
           <img
             src={logoImg}
@@ -51,7 +51,7 @@ const Navbar = ({ onAccountClick }: NavbarProps) => {
           </button>
           <a
             href="#pricing"
-            className="font-mono text-[10px] tracking-wider uppercase bg-foreground text-primary-foreground px-5 py-2 rounded-lg hover:bg-foreground/90 transition-all duration-200"
+            className="rounded-lg border border-brand-glow/50 bg-brand-glow/20 px-5 py-2 font-mono text-[10px] uppercase tracking-wider text-foreground transition-all duration-200 hover:bg-brand-glow/30"
           >
             Buy Now
           </a>
@@ -70,7 +70,7 @@ const Navbar = ({ onAccountClick }: NavbarProps) => {
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -90,7 +90,7 @@ const Navbar = ({ onAccountClick }: NavbarProps) => {
           <a
             href="#pricing"
             onClick={() => setOpen(false)}
-            className="block px-6 py-3.5 text-xs text-primary-foreground bg-foreground font-mono tracking-wider uppercase"
+            className="block px-6 py-3.5 text-xs bg-brand-glow/20 text-foreground font-mono tracking-wider uppercase"
           >
             Buy Now
           </a>

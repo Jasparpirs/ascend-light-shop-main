@@ -1,5 +1,4 @@
 import { useState } from "react";
-import heroImg from "@/assets/hero-bg.jpg";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProductsSection from "@/components/ProductsSection";
@@ -25,7 +24,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar onAccountClick={() => setShowAccount(true)} />
-      <HeroSection heroImg={heroImg} />
+      <HeroSection />
       <ProductsSection onPurchase={setPurchaseProduct} />
       <PricingSection onPurchase={setPurchaseProduct} />
       <SafetySection />
@@ -46,4 +45,3 @@ const Index = () => {
 };
 
 export default Index;
-

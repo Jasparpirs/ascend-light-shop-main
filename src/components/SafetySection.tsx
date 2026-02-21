@@ -68,40 +68,28 @@ const item = {
 };
 
 const SafetySection = () => (
-  <section id="safety" className="section-divider py-28 px-6">
-    <div className="max-w-6xl mx-auto">
+  <section id="safety" className="section-divider px-6 py-24">
+    <div className="mx-auto max-w-6xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-16"
+        className="mb-14"
       >
         <div className="tag mb-4">Safety</div>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Built Safely.</h2>
-        <p className="text-muted-foreground mt-3 text-sm max-w-xl">
-          We take system-level software seriously. Here's exactly what you can expect.
+        <h2 className="text-4xl font-black tracking-tighter md:text-5xl">Built Safely.</h2>
+        <p className="mt-3 max-w-xl text-sm text-muted-foreground">
+          We take system-level software seriously. Here is exactly what you can expect.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {safetyPoints.map((point) => (
-          <motion.div
-            key={point.title}
-            variants={item}
-            className="bg-card border border-border/50 p-7 rounded-xl hover:border-border/80 transition-all duration-500 group"
-          >
-            <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-5 text-muted-foreground group-hover:text-foreground transition-colors">
-              {point.icon}
-            </div>
-            <h3 className="font-bold text-sm mb-2 tracking-tight">{point.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{point.desc}</p>
+          <motion.div key={point.title} variants={item} className="utility-panel utility-panel-hover p-7">
+            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-border/60 bg-muted/40 text-muted-foreground">{point.icon}</div>
+            <h3 className="mb-2 text-sm font-bold tracking-tight">{point.title}</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">{point.desc}</p>
           </motion.div>
         ))}
       </motion.div>

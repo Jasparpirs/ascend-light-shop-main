@@ -20,7 +20,7 @@ const plans = [
     name: "Full Bundle",
     price: 19.99,
     license: "lifetime",
-    billingNote: "Best value — Save $5",
+    billingNote: "Best value - Save $5",
     highlight: true,
     perks: ["Both utilities included", "Lifetime license", "All future updates", "2 PC activations each", "Priority support", "Early access to new tools"],
   },
@@ -46,55 +46,43 @@ const item = {
 };
 
 const PricingSection = ({ onPurchase }: PricingSectionProps) => (
-  <section id="pricing" className="section-divider py-28 px-6">
-    <div className="max-w-6xl mx-auto">
+  <section id="pricing" className="section-divider px-6 py-24">
+    <div className="mx-auto max-w-6xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-16 text-center"
+        className="mb-14 text-center"
       >
-        <div className="tag mb-4 mx-auto">Pricing</div>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter">Simple Pricing</h2>
-        <p className="text-muted-foreground mt-3 text-sm">
-          Pay once. Use forever. No subscriptions.
-        </p>
+        <div className="tag mx-auto mb-4">Pricing</div>
+        <h2 className="text-4xl font-black tracking-tighter md:text-5xl">Simple Pricing</h2>
+        <p className="mt-3 text-sm text-muted-foreground">Pay once. Use forever. No subscriptions.</p>
       </motion.div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid md:grid-cols-3 gap-5 items-start"
-      >
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid items-start gap-5 md:grid-cols-3">
         {plans.map((plan) => (
           <motion.div
             key={plan.id}
             variants={item}
-            className={`p-8 flex flex-col relative rounded-xl border transition-all duration-500 ${
-              plan.highlight
-                ? "bg-gradient-to-b from-card to-background border-brand-glow/20 shadow-[0_0_60px_hsl(210_100%_60%_/_0.08)] md:scale-105 md:-my-2"
-                : "bg-card border-border/60 hover:border-border"
+            className={`utility-panel flex flex-col p-8 relative transition-all duration-500 ${
+              plan.highlight ? "border-brand-glow/40 shadow-[0_0_40px_hsl(var(--brand-glow)/0.2)] md:scale-105" : "utility-panel-hover"
             }`}
           >
             {plan.highlight && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="font-mono text-[10px] tracking-widest uppercase bg-brand-glow text-primary-foreground px-4 py-1.5 rounded-full font-semibold">
+                <span className="rounded-full border border-brand-glow/60 bg-brand-glow/20 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest">
                   Best Value
                 </span>
               </div>
             )}
-            <h3 className="text-lg font-bold mb-1 tracking-tight">{plan.name}</h3>
-            <p className="font-mono text-[10px] tracking-widest uppercase mb-6 text-muted-foreground">
-              {plan.billingNote}
-            </p>
+            <h3 className="mb-1 text-lg font-bold tracking-tight">{plan.name}</h3>
+            <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{plan.billingNote}</p>
             <div className="mb-8">
-              <span className="text-4xl font-black font-mono">${plan.price}</span>
-              <span className="text-sm ml-1 font-mono text-muted-foreground">/ {plan.license}</span>
+              <span className="font-mono text-4xl font-black">${plan.price}</span>
+              <span className="ml-1 font-mono text-sm text-muted-foreground">/ {plan.license}</span>
             </div>
-            <ul className="space-y-3 mb-10 flex-1">
+            <ul className="mb-10 flex-1 space-y-3">
               {plan.perks.map((p) => (
                 <li key={p} className="flex items-center gap-3 text-sm">
                   <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" className={plan.highlight ? "text-brand-glow" : "text-muted-foreground"}>
@@ -114,10 +102,10 @@ const PricingSection = ({ onPurchase }: PricingSectionProps) => (
                   license: plan.license,
                 })
               }
-              className={`w-full font-mono text-xs tracking-wider uppercase py-3.5 rounded-lg transition-all duration-300 ${
+              className={`w-full rounded-lg py-3.5 font-mono text-xs uppercase tracking-wider transition-all duration-300 ${
                 plan.highlight
-                  ? "bg-brand-glow text-primary-foreground hover:opacity-90 shadow-[0_0_20px_hsl(210_100%_60%_/_0.2)]"
-                  : "bg-foreground text-primary-foreground hover:bg-foreground/90"
+                  ? "border border-brand-glow/60 bg-brand-glow/20 hover:bg-brand-glow/30"
+                  : "border border-border/70 bg-muted/20 hover:bg-muted/35"
               }`}
             >
               Purchase
@@ -126,7 +114,7 @@ const PricingSection = ({ onPurchase }: PricingSectionProps) => (
         ))}
       </motion.div>
 
-      <p className="text-muted-foreground text-xs font-mono mt-10 text-center opacity-60">
+      <p className="mt-10 text-center font-mono text-xs text-muted-foreground opacity-60">
         Payments processed securely via PayPal. All licenses are non-transferable.
       </p>
     </div>
