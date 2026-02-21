@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 18% 7%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 18% 7%;
+    --popover-foreground: 220 10% 95%;
+
+    --primary: 220 10% 95%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 220 10% 95%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 220 15% 14%;
+    --accent-foreground: 220 10% 95%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 97%;
+
+    --border: 220 15% 15%;
+    --input: 220 15% 10%;
+    --ring: 220 10% 95%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --brand-glow: 210 100% 60%;
+    --brand-accent: 210 100% 55%;
+    --subtle: 220 18% 6%;
+    --tag-bg: 220 15% 10%;
+    --success: 160 84% 39%;
+
+    --sidebar-background: 220 20% 4%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 220 10% 95%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 12%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 15% 15%;
+    --sidebar-ring: 220 10% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 80px hsl(var(--brand-glow) / 0.3), 0 0 160px hsl(var(--brand-glow) / 0.1);
+  }
+
+  .border-subtle {
+    border: 1px solid hsl(var(--border));
+  }
+
+  .bg-subtle {
+    background: hsl(var(--subtle));
+  }
+
+  .tag {
+    background: hsl(var(--tag-bg));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    display: inline-block;
+    border-radius: 9999px;
+  }
+
+  .section-divider {
+    border-top: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  .glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px hsl(var(--brand-glow) / 0.1), 0 0 40px hsl(var(--brand-glow) / 0.05);
+  }
+}
